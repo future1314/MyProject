@@ -5,11 +5,11 @@
 <configuration>
 
 	<settings>
-		<!-- 驼峰命名  数据库字段名 user_name 实体属性名 userName -->
-		<setting name="mapUnderscoreToCamelCase" value="true"/>
-	
-		<setting name="useGeneratedKeys" value="true"/>
-		
+		<!-- 驼峰命名 数据库字段名 user_name 实体属性名 userName -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+
+		<setting name="useGeneratedKeys" value="true" />
+
 	</settings>
-	
+
 </configuration>

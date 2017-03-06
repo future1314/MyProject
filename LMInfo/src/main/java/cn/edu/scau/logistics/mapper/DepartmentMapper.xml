@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.edu.scau.logistics.dao.DepartmentDao">
+
+	<select id="findAllDep" resultType="Department">
+
+		select * from department;
+	</select>
+
+	<select id="findDepByName" parameterType="String" resultType="Department">
+		select *from department where department_name = #{departmentName}
+	</select>
+
+	<insert id="addDep" parameterType="Department">
+		insert into department (department_name) values (#{departmentName})
+	</insert>
+</mapper>

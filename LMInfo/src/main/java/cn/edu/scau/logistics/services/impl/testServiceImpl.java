@@ -11,9 +11,7 @@ import cn.edu.scau.logistics.services.interfaces.testService;
 public class testServiceImpl implements testService{
 	@Autowired
 	private testMapper testmapper;
-	@Override
 	public testEntity findById(int id) {
-		// TODO Auto-generated method stub
 		testEntity test = testmapper.findById(id);
 		return test;
 	}

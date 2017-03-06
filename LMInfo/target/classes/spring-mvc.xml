@@ -23,7 +23,7 @@
 				<property name="writeAcceptCharset" value="false" />
 			</bean>
 		</mvc:message-converters>
-		
+
 	</mvc:annotation-driven>
 	<!-- 静态资源处理 -->
 	<mvc:default-servlet-handler />

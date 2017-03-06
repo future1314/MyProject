@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.scau.logistics.dao.OrderDao">
+	<select id="findById" resultType="Order">
+		select o.* , c.customer_id , c.customer_name from orders_table o,customer c
+		where ordertabler_id = #{orderId}
+		and o.customer_id = c.customer_id
+
+	</select>
+
+	<select id="getTotal" parameterType="string" resultType="int">
+		select count(*) from orders_table o,customer c
+		<where>
+			<if test="_parameter != null">
+				and (
+				customer_name like "%"#{info}"%"
+				or operator_name like "%"#{info}"%"
+				or is_send like "%"#{info}"%"
+				or orders_time like "%"#{info}"%"
+				or send_time like "%"#{info}"%"
+				or arrive_time like "%"#{info}"%"
+				) and
+			</if>
+			o.customer_id = c.customer_id
+		</where>
+	</select>
+
+	<select id="queryOrder" resultType="Order" parameterType="int">
+		select o.* , c.customer_id , c.customer_name from orders_table
+		o,customer c
+		<where>
+			<if test="info!=null and info!=''">
+				and (
+				customer_name like "%"#{info}"%"
+				or operator_name like "%"#{info}"%"
+				or is_send like "%"#{info}"%"
+				or orders_time like "%"#{info}"%"
+				or send_time like "%"#{info}"%"
+				or arrive_time like "%"#{info}"%"
+				) and
+
+			</if>
+
+			o.customer_id = c.customer_id
+		</where>
+		limit #{start}, #{size}
+	</select>
+
+	<insert id="addOrder" parameterType="Order" keyProperty="ordertablerId">
+		insert into orders_table
+		(customer_id,consignee, receiving_tel,receiving_address,
+		send_time,arrive_time,is_send,operator_name,orders_time)
+		values
+		(
+		#{customerId},#{consignee},#{receivingTel},#{receivingAddress},
+		#{sendTime},#{arriveTime},#{isSend},#{operatorName},#{ordersTime}
+		)
+
+	</insert>
+
+	<update id="updateOrder" parameterType="Order">
+		update orders_table
+		set
+		orders_table.consignee = #{consignee},
+		orders_table.receiving_tel = #{receivingTel},
+		orders_table.receiving_address = #{receivingAddress},
+		orders_table.send_time = #{sendTime},
+		orders_table.arrive_time = #{arriveTime},
+		orders_table.is_send =#{isSend},
+		orders_table.operator_name = #{operatorName}
+		where ordertabler_id = #{ordertablerId}
+	</update>
+
+	<delete id="deleteOrder" parameterType="int">
+
+		delete from orders_table where ordertabler_id = #{orderId}
+	</delete>
+
+</mapper>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.scau.logistics.dao.UserDao">
+	<!-- 用户登录 -->
+	<select id="login" parameterType="UserEntity"
+		resultType="cn.edu.scau.logistics.entity.UserEntity">
+		select * from user where account = #{account} and user_password =
+		#{userPassword}
+	</select>
+
+	<!-- 通过账号获得用户信息 -->
+	<select id="findAccount" parameterType="String"
+		resultType="cn.edu.scau.logistics.entity.UserEntity">
+		select * from user where account = #{account}
+	</select>
+	<!-- 通过id获得用户信息 -->
+	<select id="findUserById" parameterType="int" resultType="UserEntity">
+		select *from user where user_id = #{userId}
+	</select>
+
+	<!-- 添加用户 -->
+	<insert id="addUser" parameterType="UserEntity">
+		insert into user(account,user_password,user_tel,user_name,user_email,role)
+		values(#{account},#{userPassword},#{userTel},#{userName},#{userEmail},#{role})
+	</insert>
+	<!-- 获得表格的总条数 -->
+	<select id="getTotal" parameterType="String" resultType="int">
+		select count(*) from user
+		<where>
+			<if test="_parameter != null">
+				and account like "%"#{info}"%" or user_name like "%"#{info}"%"
+			</if>
+		</where>
+	</select>
+
+	<!-- 分页查询用户 -->
+	<select id="queryAllUser" parameterType="int"
+		resultType="cn.edu.scau.logistics.entity.UserEntity">
+		select * from user
+		<where>
+			<if test="info!=null and info!=''">
+				and account like "%"#{info}"%" or user_name like "%"#{info}"%"
+			</if>
+		</where>
+		limit #{start}, #{size}
+	</select>
+
+	<!-- 修改用户信息 -->
+	<update id="updateUser" parameterType="UserEntity">
+		update user
+		set user.account = #{account},
+		user.user_password = #{userPassword},
+		user.user_tel = #{userTel},
+		user.user_name = #{userName},
+		user.user_email = #{userEmail},
+		user.role = #{role}
+		where user_id = #{userId}
+	</update>
+
+	<!-- 删除用户信息 -->
+	<delete id="deleteUser" parameterType="int">
+		delete from user where user_id = #{userId}
+	</delete>
+
+</mapper>

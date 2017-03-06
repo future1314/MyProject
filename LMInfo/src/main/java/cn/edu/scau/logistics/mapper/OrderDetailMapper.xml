@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.scau.logistics.dao.OrderDetailDao">
+	<select id="findById" resultType="OrderDetail">
+		select * from table_detail where ordertabler_id = #{detailId}
+	</select>
+
+	<insert id="addOrderDetail" parameterType="OrderDetail">
+		insert into table_detail
+		(ordertabler_id,product_id,product_name,product_category,product_weight,product_volume,product_num,
+		freight,income,other)
+		values
+		(
+		#{ordertablerId},#{productId},#{productName},#{productCategory},#{productWeight},#{productVolume},
+		#{productNum},#{freight},#{income},#{other}
+		)
+
+	</insert>
+
+	<delete id="deletrOrderDetail">
+		delete from table_detail where ordertable_detail_id = #{id} or
+		ordertabler_id = #{id}
+	</delete>
+
+	<update id="updateOrderDetail" parameterType="OrderDetail">
+		update table_detail
+		set
+		table_detail.product_id = #{productId},
+		table_detail.product_name = #{productName},
+		table_detail.product_category = #{productCategory},
+		table_detail.product_weight = #{productWeight},
+		table_detail.product_volume = #{productVolume},
+		table_detail.product_num = #{productNum},
+		table_detail.freight = #{freight},
+		table_detail.income = #{income},
+		table_detail.other = #{other}
+
+		where table_detail.ordertabler_id = #{ordertablerId}
+	</update>
+
+</mapper>
