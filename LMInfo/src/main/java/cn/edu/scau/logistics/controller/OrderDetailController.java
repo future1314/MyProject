@@ -14,6 +14,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import cn.edu.scau.logistics.entity.OrderDetail;
+import cn.edu.scau.logistics.entity.VehicleSch;
+import cn.edu.scau.logistics.services.interfaces.DispathService;
 import cn.edu.scau.logistics.services.interfaces.OrderDetailService;
 
 @Controller
@@ -21,22 +23,26 @@ import cn.edu.scau.logistics.services.interfaces.OrderDetailService;
 public class OrderDetailController {
 	@Resource
 	private OrderDetailService orderDetailService;
+	@Resource
+	private DispathService dispathServcie;
+	
 	
 	@RequestMapping("/save")
 	public String saveDetail(OrderDetail orderDetail,HttpServletRequest request ,ModelMap model)throws Exception{
 		int ordertablerId = Integer.parseInt(request.getParameter("ordertablerId"));
 		orderDetail.setOrdertablerId(ordertablerId);
-		if(orderDetail.getOrdertablerId() == 0){
-			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!");
-
-			orderDetailService.addOrderDetail(orderDetail);
-		}
-		else{
-			System.out.println("??????????????????");
-
-			orderDetailService.updateOrderDetail(orderDetail);
-		}
+		orderDetail.setOrdertableDetailId(ordertablerId);
+		orderDetailService.addOrderDetail(orderDetail);
+		VehicleSch sch = new VehicleSch();
+		sch.setOrdertableDetailId(orderDetail.getOrdertableDetailId());
+		dispathServcie.addSch(sch);
 		return "redirect:/order/findOrder";
+	}
+	
+	@RequestMapping("/update")
+	public String updateDetali(OrderDetail orderDetail,HttpServletRequest request)throws Exception{
+		orderDetailService.updateOrderDetail(orderDetail);
+		return "redirect:/order/finOrder";
 	}
 	
 	

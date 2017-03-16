@@ -33,7 +33,7 @@
 				<tr>
 					<td width="10%" align="right" nowrap="nowrap" bgcolor="#f1f1f1">订单日期：</td>
 					<td width="23%"><input name="ordersTime" type="date"
-						class="form-control" /></td>
+						class="form-control" required/></td>
 					<td width="10%" align="right" nowrap="nowrap" bgcolor="#f1f1f1">客户姓名：</td>
 					<td width="23%"><select name="customerId" id="selectName"
 						class=" span2">
@@ -45,30 +45,30 @@
 
 					</select></td>
 					<td width="10%" align="right" nowrap="nowrap" bgcolor="#f1f1f1">收货人：</td>
-					<td><input type="text" name="consignee" id="" class="span1-1" /></td>
+					<td><input type="text" name="consignee" id="" class="span1-1" required/></td>
 				</tr>
 				<tr>
 					<td align="right" nowrap="nowrap" bgcolor="#f1f1f1">收货人联系电话：</td>
 					<td><input type="text" name="receivingTel" id=""
-						class="span1-1" /></td>
+						class="span1-1" required/></td>
 					<td align="right" nowrap="nowrap" bgcolor="#f1f1f1">收货人地址：</td>
 					<td><input type="text" name="receivingAddress" id=""
-						class="span1-4" /></td>
+						class="span1-4" required/></td>
 					<td align="right" nowrap="nowrap" bgcolor="#f1f1f1">预发时间：</td>
 					<td><input name="sendTime" type="date" class="form-control"
-						id="send" /></td>
+						id="send" required/></td>
 				</tr>
 				<tr>
 					<td align="right" nowrap="nowrap" bgcolor="#f1f1f1">预到时间：</td>
 					<td><input name="arriveTime" type="date" class="form-control"
-						id="arrive" /></td>
+						id="arrive" required/></td>
 					<td align="right" nowrap="nowrap" bgcolor="#f1f1f1">是否已经发货：</td>
 					<td><input type="radio" value="Y" name="isSend" /> Y <input
 						type="radio" value="N" name="isSend" /> N</td>
 
 					<td align="right" nowrap="nowrap" bgcolor="#f1f1f1">操作员：</td>
 					<td><input type="text" name="operatorName" id="input3"
-						class="span1-1" /></td>
+						class="span1-1" required/></td>
 				</tr>
 			</table>
 

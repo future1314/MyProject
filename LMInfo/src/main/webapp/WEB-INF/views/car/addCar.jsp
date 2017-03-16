@@ -30,29 +30,30 @@
     <span>温馨提示：</span>
     编号系统自动生成<br/> <br/>
     <span>车牌号码:&nbsp;&nbsp;</span>
-    <input type="text" name="carNum" />
+    <input type="text" name="carNum" required/>
       <span style="color: red">*</span>
     <br/> <br/>
     <span>负重:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-    <input type="text" name="deadweight"/>
+    <input type="text" name="deadweight" required/>
        <span style="color: red">*</span>
     <br/> <br/>
     <span>车辆长度:&nbsp;</span>
-    <input type="text" name="carLong"/>
+    <input type="text" name="carLong" required/>
        <span style="color: red">*</span>
     <br/> <br/>
     <span>车辆宽度:&nbsp;&nbsp;</span>
-    <input type="text" name="carHeight"/>
+    <input type="text" name="carHeight" required/>
        <span style="color: red">*</span>
     <br/> <br/>
     <span>车辆状态:&nbsp;</span>
-    <input type="text" name="carState"/>
+    <input type="text" name="carState" value="N" readonly="readonly"/>
        <span style="color: red">*</span>
     <br/> <br/>
     <span>司机：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
     <select name="carDriver">
-    <option value="volvo">超级管理员</option>
-    <option value="opel" selected = "selected">系统使用者</option>
+    <c:forEach items="${driver}"  var="driver">
+    <option value="${driver.workId}">${driver.workName}</option>
+    </c:forEach>
     </select>
       <span style="color: red">*</span>
     <br/> <br/>

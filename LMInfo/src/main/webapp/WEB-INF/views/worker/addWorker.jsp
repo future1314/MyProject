@@ -31,18 +31,32 @@
 		</div>
 		<form action="<%=request.getContextPath()%>/worker/save" method="post"
 			class="form_table">
-			<span>温馨提示：</span> 员工编号系统自动生成<br /> <br /> <span>姓名:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<span>温馨提示：</span> 员工编号系统自动生成<br /> <br /> 
+			<span>姓名:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 			<input type="text" name="workName" required /> <span
-				style="color: red">*</span> <br /> <br /> <span>性别:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-			<input type="text" name="workSex" /> <br /> <br /> <span>生日:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-			<input type="text" class="laydate-icon span1-1" id="Calendar"
-				name="dateBirth" /> <br /> <br /> <span>联系方式:</span> <input
-				type="text" name="tel" required /> <span style="color: red">*</span>
-			<br /> <br /> <span>地址:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-			<input type="text" name="address" required /> <span
-				style="color: red">*</span> <br /> <br /> <span>身份证:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+				style="color: red">*</span> <br /> <br /> 
+			<!-- <span>性别:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<input type="text" name="workSex" /> <br /> <br />  -->
+			<span>生日:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<input type="text" class="laydate-icon span1-1" id="Calendar"name="dateBirth" /> <br /> <br /> 
+			<span>联系方式:</span> 
+			<input type="text" name="tel" required /> <span style="color: red">*</span>
+			<br /> <br /> 
+			<span>地址:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<input type="text" name="address" required /> 
+			<span style="color: red">*</span> 
+			<br /> <br /> 
+			<span>身份证:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 			<input type="text" name="cardno" required /> <span
-				style="color: red">*</span> <br /> <br /> <span>部门:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+				style="color: red">*</span> 
+				<br /> <br />
+			<span>性别:&nbsp;&nbsp;&nbsp;&nbsp;</span>
+     		<span>男</span>
+     	 <input style="width: 50px; height: 15px;" type="radio" name="workSex" value="男" />
+      	<span>女</span>
+     	 <input style="width: 50px; height: 15px;" type="radio" name="workSex" value="女" />
+     	<br/> <br/>
+				 <span>部门:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 			<select name="departmentId" id="selectid">
 				<c:forEach items="${depList}" var="depList">
 

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace = "cn.edu.scau.logistics.dao.CarDao">
+ 	<select id="findById" parameterType="int" resultType="Car" >
+ 	select * from car where car_id = #{carId}
+ 	</select>
+ 	
+ 	<insert id="addCar" parameterType="Car">
+ 	insert into car
+ 	(work_id,car_num,deadweight,car_state,car_long,car_height,car_driver)
+ 	values
+ 	(#{workId},#{carNum},#{ deadweight },#{carState},#{carLong},#{carHeight},#{carDriver})
+ 	</insert>
+ 	
+ 	<update id="updateCar" parameterType="Car">
+ 	update car
+ 	set 
+ 	car.work_id = #{workId},
+ 	car.car_num = #{carNum},
+ 	car.deadweight = #{deadweight},
+ 	car.car_state = #{carState},
+ 	car.car_long = #{carLong},
+ 	car.car_height = #{carHeight},
+ 	car.car_driver = #{carDriver}
+ 	where car.car_id = #{carId}
+ 	</update>
+ 	
+ 	<delete id="deleteCar" parameterType="int">
+ 	delete from car where car_id = #{carId}
+ 	</delete>
+ 	
+ 	<select id="getTotal" parameterType="String" resultType="int">
+ 	select count(*) from car
+ 	<where>
+ 		<if test="_parameter !=null">
+ 		and (
+ 		car_state like "%"#{info}"%"
+ 		or car_num like  "%"#{info}"%"
+ 		or car_state like "%"#{info}"%"
+ 		or deadweight like "%"#{info}"%"
+ 		or car_driver like "%"#{info}"%"
+ 		)
+ 		</if>
+ 	</where>
+ 	</select>
+ 	
+ 	<select id="queryCar" resultType="Car">
+ 	select * from car 
+ 	<where>
+ 		<if test="info!=null and info != '' ">
+ 		and (
+ 		car_state like "%"#{info}"%"
+ 		or car_num like  "%"#{info}"%"
+ 		or car_state like "%"#{info}"%"
+ 		or deadweight like "%"#{info}"%"
+ 		or car_driver like "%"#{info}"%"
+ 		
+ 		)
+ 		</if>
+ 	</where>
+ 	limit #{start},#{size}
+ 	</select>
+ 	
+ 	<select id="findAll" resultType="Car">
+ 	select * from car 
+ 	</select>
+ 	
+ </mapper>

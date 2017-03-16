@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.scau.logistics.dao.InputDao">
+	<select id="findById" parameterType="int" resultType="Input" >
+	select * from inputimage where ordertable_detail_id = #{id}
+	</select>
+	
+	<select id="getTotal" parameterType="string"  resultType="int">
+	select count(*) from inputimage
+	<where>
+		<if test="_parameter !=null">
+		and (
+		ordertable_detail_id like "%"#{info}"%"
+		or input_category like "%"#{info}"%"
+		or input_name like "%"#{info}"%"
+		or input_time like "%"#{info}"%"
+		or is_input like "%"#{info}"%"
+		)
+		
+		
+		</if>
+	</where>
+	</select>
+	
+	
+	<select id="queryInput" resultType="Input">
+	select * from inputimage 
+	<where>
+	<if test="info!=null and info != '' ">
+	and (
+		ordertable_detail_id like "%"#{info}"%"
+		or input_category like "%"#{info}"%"
+		or input_name like "%"#{info}"%"
+		or input_time like "%"#{info}"%"
+		or is_input like "%"#{info}"%"
+	)
+	
+	</if>
+	</where>
+		limit #{start},#{size}
+	</select>
+	
+	<update id="updateInput" parameterType="Input">
+	update inputimage
+	set 
+	input_category  = #{inputCategory},
+	input_name = #{inputName},
+	input_num = #{inputNum},
+	input_true_num = #{inputTrueNum},
+	input_time = #{inputTime},
+	is_input = #{isInput},
+	input_other = #{inputOther}
+	where ordertable_detail_id = #{ordertableDetailId}
+	
+	</update>
+	
+	<delete id="deleteInput" >
+	delete from inputimage where ordertable_detail_id =#{id}
+	</delete>
+	
+	<insert id="addInput" parameterType="Input">
+	insert into inputimage
+	(input_id, ordertable_detail_id)
+	values(
+	#{inputId},#{ordertableDetailId}
+	)
+	
+	</insert>
+</mapper>

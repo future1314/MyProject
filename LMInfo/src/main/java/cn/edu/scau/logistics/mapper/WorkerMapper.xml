@@ -3,6 +3,11 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.scau.logistics.dao.WorkerDao">
+	<select id="findAllDriver" resultType = "Driver">
+	select e.work_id,e.work_name from employee e ,department d 
+	where  (e.department_id = d.department_id) and d.department_name = "司机"
+	</select>
+	
 	<select id="findById" parameterType="int" resultType="Worker">
 		select * from employee e, department d where work_id = #{workId} and
 		e.department_id = d.department_id

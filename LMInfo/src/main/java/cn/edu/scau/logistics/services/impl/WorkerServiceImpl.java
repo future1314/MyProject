@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import cn.edu.scau.logistics.dao.WorkerDao;
+import cn.edu.scau.logistics.entity.Driver;
 import cn.edu.scau.logistics.entity.Worker;
 import cn.edu.scau.logistics.services.interfaces.WorkerService;
 import cn.edu.scau.logistics.util.Page;
@@ -55,5 +56,14 @@ public class WorkerServiceImpl implements WorkerService {
 		// TODO Auto-generated method stub
 		return workerDao.findById(workId);
 	}
+
+	@Override
+	public List<Driver> findAllDriver() {
+		// TODO Auto-generated method stub
+		
+		return workerDao.findAllDriver();
+	}
+	
+	
 
 }

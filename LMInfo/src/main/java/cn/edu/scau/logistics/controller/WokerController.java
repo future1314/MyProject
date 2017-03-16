@@ -60,9 +60,13 @@ public class WokerController {
 	 * @return
 	 */
 	@RequestMapping("/save")
-	public String saveWorker(Worker worker,HttpServletRequest request)throws Exception{
-		int departmentId = Integer.parseInt(request.getParameter("departmentId"));
-		worker.setDepartmentId(departmentId);
+	public String saveWorker(Worker worker,HttpServletRequest request,String departmentId)throws Exception{
+		int id;
+		if(request.getParameter("departmentId") != null)
+		id = Integer.parseInt(request.getParameter("departmentId"));
+		else
+			id = 0;
+		worker.setDepartmentId(id);
 		if(worker.getWorkId() == 0)
 			workerService.addWorker(worker);
 		else

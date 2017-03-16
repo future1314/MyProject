@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import cn.edu.scau.logistics.dao.DispathDao;
 import cn.edu.scau.logistics.dao.OrderDao;
 import cn.edu.scau.logistics.dao.OrderDetailDao;
 import cn.edu.scau.logistics.entity.Order;
@@ -17,7 +18,8 @@ public class OrderServiceImpl implements OrderService {
 	private OrderDao orderDao;
 	@Resource
 	private OrderDetailDao orderDelDao;
-	
+	@Resource
+	private DispathDao dispathDao;
 	@Override
 	public int addOrder(Order order) {
 		// TODO Auto-generated method stub
@@ -30,18 +32,19 @@ public class OrderServiceImpl implements OrderService {
 		// TODO Auto-generated method stub
 		Order order = orderDao.findById(orderId);
 		orderDelDao.deletrOrderDetail(order.getOrdertablerId());
+		//dispathDao.deleteSch(order.getOrdertablerId());
 		return orderDao.deleteOrder(orderId);
 	}
 
 	@Override
 	public Page queryOrder(String info, int current) {
+		// TODO Auto-generated method stub
 		Page page = new Page( current );
 		int count = orderDao.getTotal(info);
 		page.setCount(count);
 		List< Order > orderList = orderDao.queryOrder(info, page.getStart(), page.getSize());
 		page.setList(orderList);
 		return page;
-		// TODO Auto-generated method stub
 
 	}
 

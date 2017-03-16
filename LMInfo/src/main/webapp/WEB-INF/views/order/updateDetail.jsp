@@ -27,7 +27,7 @@
 		<div class="title_right">
 			<strong>订单详情</strong>
 		</div>
-		<form action="<%=request.getContextPath() %>/orderDetail/save"
+		<form action="<%=request.getContextPath() %>/orderDetail/update"
 			method="post">
 			<h4 style="width: 400px; height: 30px; margin: 0 auto;">查看订单的同时，还可以修改信息哦</h4>
 			<strong>订单编号</strong> <input type="text" readonly="readonly"
@@ -36,32 +36,32 @@
 				<tr>
 					<td width="10%" align="right" nowrap="nowrap" bgcolor="#f1f1f1">货物编码：</td>
 					<td width="23%"><input type="text" name="productId"
-						id="input10" class="span1-1" value="${orderDetail.productId}" /></td>
+						id="input10" class="span1-1" value="${orderDetail.productId}" required/></td>
 					<td width="10%" align="right" nowrap="nowrap" bgcolor="#f1f1f1">货物名字：</td>
 					<td width="23%"><input type="text" name="productName"
-						id="input14" class="span1-1" value="${orderDetail.productName}" /></td>
+						id="input14" class="span1-1" value="${orderDetail.productName}" required/></td>
 					<td width="10%" align="right" nowrap="nowrap" bgcolor="#f1f1f1">货物类型：</td>
 					<td><input type="text" name="productCategory" id="input15"
-						class="span1-1" /></td>
+						class="span1-1" required/></td>
 				</tr>
 				<tr>
 					<td align="right" nowrap="nowrap" bgcolor="#f1f1f1">货物重量：</td>
 					<td><input type="text" name="productWeight" id="input1-1"
-						class="span1-1" value="${orderDetail.productWeight }" /></td>
+						class="span1-1" value="${orderDetail.productWeight }" required/></td>
 					<td align="right" nowrap="nowrap" bgcolor="#f1f1f1">货物体积：</td>
 					<td><input type="text" name="productVolume" id="input12"
-						class="span1-1" value="${orderDetail.productVolume }" /></td>
+						class="span1-1" value="${orderDetail.productVolume }" required/></td>
 					<td align="right" nowrap="nowrap" bgcolor="#f1f1f1">数量：</td>
 					<td><input type="text" name="productNum" id="input16"
-						class="span1-1" value="${orderDetail. productNum}" /></td>
+						class="span1-1" value="${orderDetail. productNum}" required/></td>
 				</tr>
 				<tr>
 					<td align="right" nowrap="nowrap" bgcolor="#f1f1f1">收入：</td>
 					<td><input type="text" name="income" id="input16"
-						class="span1-1" value="${orderDetail.income }" /></td>
+						class="span1-1" value="${orderDetail.income }" required/></td>
 					<td align="right" nowrap="nowrap" bgcolor="#f1f1f1">运费：</td>
 					<td><input type="text" name="freight" id="input16"
-						class="span1-1" value="${orderDetail.freight }" /></td>
+						class="span1-1" value="${orderDetail.freight }" required/></td>
 					<td align="right" nowrap="nowrap" bgcolor="#f1f1f1">备注：</td>
 					<td align="right" nowrap="nowrap"><input type="text"
 						name="other" id="input9" class="span10"

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -73,7 +75,8 @@
 				</div>
 
 				<div class="collapsed">
-					<span>数据统计</span> <a href="#">收款详单</a> <a href="#">每日汇总</a>
+					<span>数据统计</span> <a href="<%=request.getContextPath()%>/echarts/goEcharts"
+					target="right_function">统计</a>
 				</div>
 				<div class="collapsed">
 					<span>订单管理</span> <a
@@ -83,6 +86,8 @@
 						target="right_function">订单信息查询</a>
 
 				</div>
+				<c:if test="${resultUser.role=='超级管理员' }">
+				
 				<div class="collapsed">
 					<span>用户管理</span> <a
 						href="<%=request.getContextPath() %>/user/goAddUser"
@@ -90,15 +95,21 @@
 						href="<%=request.getContextPath() %>/user/findUser?current=1"
 						target="right_function">查询所有用户信息</a>
 				</div>
+				</c:if>
+			
 
 
 				<div class="collapsed">
-					<span>车辆管理</span> <a href="#">新增车辆信息</a> <a href="#">车辆基本信息管理</a> <a
-						href="#">车辆调度管理</a>
+					<span>车辆管理</span> 
+					<a href="<%=request.getContextPath() %>/car/goAddCar" target="right_function">新增车辆信息</a> 
+					<a href="<%=request.getContextPath()%>/car/findCar?current=1" target="right_function">查询车辆基本信息管理</a> 
+					<a href="<%=request.getContextPath() %>/dispath/findDispath?current=1" target="right_function">车辆调度管理</a>
 				</div>
 
 				<div class="collapsed">
-					<span>货物管理</span> <a href="#">货物入库</a> <a href="#">货物出库</a>
+					<span>货物管理</span> 
+					<a href="<%=request.getContextPath()%>/input/findInput?current=1" target="right_function">货物入库</a> 
+					<a href="<%=request.getContextPath()%>/output/findOutput?current=1" target="right_function">货物出库</a>
 				</div>
 			</div>
 
@@ -110,12 +121,12 @@
 	$(".left").toggle();
 	 
 		});
-});
+})
 </script>
 
 		<div class="right" id="mainFrame">
-			<iframe name="right_function" style="width: 100%; min-height: 800px;"
-				scrolling="no" frameborder="0" border="0"></iframe>
+			<iframe name="right_function" style="width: 100%; min-height: 800px;" 
+			scrolling="no" frameborder="0" border="0"></iframe>
 		</div>
 	</div>
 

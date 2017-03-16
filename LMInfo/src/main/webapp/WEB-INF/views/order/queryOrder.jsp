@@ -51,6 +51,7 @@
 						<td><strong>预到时间</strong></td>
 						<td><strong>是否已经发货</strong></td>
 						<td><strong>订单生成时间</strong></td>
+						<td><strong>订单是否完成</strong></td>
 						<td><strong>操作员</strong></td>
 						<td><strong>操作</strong></td>
 					</tr>
@@ -68,14 +69,25 @@
 									<td>${orderList.arriveTime }</td>
 									<td><c:choose>
 											<c:when test="${orderList.isSend =='Y' }">
-             			是
+             			Y
              			</c:when>
 											<c:otherwise>
-             			否
+             		N
              			</c:otherwise>
 
 										</c:choose></td>
 									<td>${orderList.ordersTime}</td>
+									<td>
+									<c:choose>
+										<c:when test="${orderList.tableState == 'Y' }">
+										Y
+										</c:when>
+										
+										<c:otherwise>
+										N
+										</c:otherwise>
+									</c:choose>
+									</td>
 									<td>${orderList.operatorName }</td>
 									<td><a id="DataGrid1_ctl03_LinkButton1"
 										href="<%=request.getContextPath() %>/orderDetail/goUpdate/${orderList.ordertablerId}">查看详情&nbsp;</a>

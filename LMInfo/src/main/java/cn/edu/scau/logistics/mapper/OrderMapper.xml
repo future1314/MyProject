@@ -21,6 +21,7 @@
 				or orders_time like "%"#{info}"%"
 				or send_time like "%"#{info}"%"
 				or arrive_time like "%"#{info}"%"
+				or table_state like "%"#{info}"%"
 				) and
 			</if>
 			o.customer_id = c.customer_id
@@ -39,23 +40,25 @@
 				or orders_time like "%"#{info}"%"
 				or send_time like "%"#{info}"%"
 				or arrive_time like "%"#{info}"%"
+				or table_state like "%"#{info}"%"
 				) and
 
 			</if>
 
 			o.customer_id = c.customer_id
 		</where>
-		limit #{start}, #{size}
+		order by o.ordertabler_id asc limit #{start}, #{size} 
 	</select>
 
 	<insert id="addOrder" parameterType="Order" keyProperty="ordertablerId">
 		insert into orders_table
 		(customer_id,consignee, receiving_tel,receiving_address,
-		send_time,arrive_time,is_send,operator_name,orders_time)
+		send_time,arrive_time,is_send,operator_name,orders_time,
+		table_state)
 		values
 		(
 		#{customerId},#{consignee},#{receivingTel},#{receivingAddress},
-		#{sendTime},#{arriveTime},#{isSend},#{operatorName},#{ordersTime}
+		#{sendTime},#{arriveTime},#{isSend},#{operatorName},#{ordersTime},'N'
 		)
 
 	</insert>
@@ -69,7 +72,8 @@
 		orders_table.send_time = #{sendTime},
 		orders_table.arrive_time = #{arriveTime},
 		orders_table.is_send =#{isSend},
-		orders_table.operator_name = #{operatorName}
+		orders_table.operator_name = #{operatorName},
+		orders_table.table_state = #{tableState}
 		where ordertabler_id = #{ordertablerId}
 	</update>
 

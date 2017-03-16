@@ -29,7 +29,7 @@ public class UserController {
 	 * @throws Exception
 	 */
 	@RequestMapping("/login")
-	public String login(UserEntity user,HttpServletRequest request)throws Exception{
+	public String login(UserEntity user,HttpServletRequest request,Model model)throws Exception{
 		System.out.println(user.getAccount() +" "+user.getUserPassword());
 			UserEntity resultUser = userService.login(user);
 			if(resultUser == null){
@@ -37,9 +37,10 @@ public class UserController {
 				request.setAttribute("errorMsg", "用户或者密码错误");
 				return "/login";	
 			}
-			else{	
+			else{
 				HttpSession session = request.getSession();
 				session.setAttribute("currenUser", resultUser);
+				model.addAttribute("resultUser", resultUser);
 				return "/main";
 			}
 			

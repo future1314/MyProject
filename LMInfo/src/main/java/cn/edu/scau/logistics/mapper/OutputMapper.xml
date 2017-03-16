@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="cn.edu.scau.logistics.dao.OutputDao">
+ 	<select id="findById" parameterType="int" resultType="Output">
+ 	select * from outputimage where ordertable_detail_id = #{id}
+ 	
+ 	</select>
+ 	
+ 	<select id="getTotal" parameterType="String" resultType="int">
+ 	select count(*) from outputimage
+	<where>
+		<if test="_parameter !=null">
+		and (
+		ordertable_detail_id like "%"#{info}"%"
+		or output_category like "%"#{info}"%"
+		or output_name like "%"#{info}"%"
+		or output_time like "%"#{info}"%"
+		or is_output like "%"#{info}"%"
+		)
+		
+		</if>
+	</where>
+ 	</select>
+ 	
+ 	
+ 	<select id="queryOutput" resultType="Output">
+ 	select * from outputimage 
+	<where>
+	<if test="info!=null and info != '' ">
+	and (
+		ordertable_detail_id like "%"#{info}"%"
+		or output_category like "%"#{info}"%"
+		or output_name like "%"#{info}"%"
+		or output_time like "%"#{info}"%"
+		or is_output like "%"#{info}"%"
+	)
+	
+	</if>
+	</where>
+		limit #{start},#{size}
+ 	
+ 	</select>
+ 	
+ 	<update id="updateOutput" parameterType="output">
+ 	update outputimage
+	set 
+	output_category = #{outputCategory}, 
+	output_name =#{outputName}, 
+	output_num = #{outputNum}, 
+	output_true_num = #{outputTrueNum}, 
+	output_time = #{outputTime}, 
+	is_output = #{isOutput}, 
+	output_other = #{outputOther}
+	where ordertable_detail_id = #{ordertableDetailId}
+ 	
+ 	</update>
+ 	
+ 	<insert id="addOutput" parameterType="Output">
+ 	insert into outputimage
+ 	(output_id,ordertable_detail_id)
+ 	values
+ 	(#{outputId},#{ordertableDetailId})
+ 	
+ 	
+ 	</insert>
+ 	
+ 	<delete id="deleteOutput">
+ 	delete from outputimage where ordertable_detail_id = #{id}
+ 	
+ 	</delete>
+ </mapper>

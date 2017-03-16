@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "cn.edu.scau.logistics.dao.DispathDao">
+	<select id="findById" resultType="VehicleSch">
+	select * from vehiclescheduling where ordertable_detail_id = #{id}
+	</select>
+	
+	<select id="getTotal" parameterType="string" resultType="int">
+	select count(*) from vehiclescheduling 
+	<where>
+		<if test="_parameter !=null">
+		and car_send like "%"#{info}"%"
+		or car_arrive like "%"#{info}"%"
+		</if>
+	</where>
+	</select>
+	
+	<select id="querySch" resultType="VehicleSch">
+	select * from vehiclescheduling
+	<where>
+		<if test="info!=null and info != ''">
+		and car_send like "%"#{info}"%"
+		or car_arrive like "%"#{info}"%"
+		</if>
+	</where>
+	limit #{start},#{size}
+	</select>
+	
+	<insert id="addSch" parameterType="VehicleSch">
+	insert into vehiclescheduling 
+	(car_id,ordertable_detail_id,car_send,car_arrive)
+	values
+	(#{carId},#{ordertableDetailId},#{carSend},#{carArrive})
+	</insert>
+	
+	<update id="updateSch" parameterType="VehicleSch">
+	update vehiclescheduling 
+	set
+	car_id = #{carId},
+	car_send = #{carSend},
+	car_arrive =#{carArrive}
+	where ordertable_detail_id = #{ordertableDetailId}
+	</update>
+	
+	<delete id="deleteSch" parameterType="int">
+	delete from vehiclescheduling where ordertable_detail_id = #{id}
+	</delete>
+</mapper>

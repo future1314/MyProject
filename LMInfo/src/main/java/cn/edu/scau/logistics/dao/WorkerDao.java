@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import cn.edu.scau.logistics.entity.Driver;
 import cn.edu.scau.logistics.entity.Worker;
 
 public interface WorkerDao {
@@ -18,6 +19,8 @@ public interface WorkerDao {
 	public int getTotal(String info);
 	
 	public Worker findById(int workId);
+	
+	public List<Driver> findAllDriver();
 	
 	
 }

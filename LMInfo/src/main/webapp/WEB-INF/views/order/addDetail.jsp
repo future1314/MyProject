@@ -35,32 +35,32 @@
 				<tr>
 					<td width="10%" align="right" nowrap="nowrap" bgcolor="#f1f1f1">货物编码：</td>
 					<td width="23%"><input type="text" name="productId"
-						id="input10" class="span1-1" /></td>
+						id="input10" class="span1-1" required/></td>
 					<td width="10%" align="right" nowrap="nowrap" bgcolor="#f1f1f1">货物名字：</td>
 					<td width="23%"><input type="text" name="productName"
-						id="input14" class="span1-1" /></td>
+						id="input14" class="span1-1" required/></td>
 					<td width="10%" align="right" nowrap="nowrap" bgcolor="#f1f1f1">货物类型：</td>
 					<td><input type="text" name="productCategory" id="input15"
-						class="span1-1" /></td>
+						class="span1-1" required/></td>
 				</tr>
 				<tr>
 					<td align="right" nowrap="nowrap" bgcolor="#f1f1f1">货物重量：</td>
 					<td><input type="text" name="productWeight" id="input1-1"
-						class="span1-1" /></td>
+						class="span1-1" required/></td>
 					<td align="right" nowrap="nowrap" bgcolor="#f1f1f1">货物体积：</td>
 					<td><input type="text" name="productVolume" id="input12"
-						class="span1-1" /></td>
+						class="span1-1" required/></td>
 					<td align="right" nowrap="nowrap" bgcolor="#f1f1f1">数量：</td>
 					<td><input type="text" name="productNum" id="input16"
-						class="span1-1" /></td>
+						class="span1-1" required/></td>
 				</tr>
 				<tr>
 					<td align="right" nowrap="nowrap" bgcolor="#f1f1f1">收入：</td>
 					<td><input type="text" name="income" id="input16"
-						class="span1-1" /></td>
+						class="span1-1" required/></td>
 					<td align="right" nowrap="nowrap" bgcolor="#f1f1f1">运费：</td>
 					<td><input type="text" name="freight" id="input16"
-						class="span1-1" /></td>
+						class="span1-1" required/></td>
 					<td align="right" nowrap="nowrap" bgcolor="#f1f1f1">备注：</td>
 					<td align="right" nowrap="nowrap"><input type="text"
 						name="other" id="input9" class="span10" /></td>

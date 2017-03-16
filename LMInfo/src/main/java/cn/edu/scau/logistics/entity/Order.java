@@ -12,6 +12,7 @@ public class Order {
 	private String isSend;
 	private String operatorName;
 	private String ordersTime;
+	private String tableState;
 	public int getOrdertablerId() {
 		return ordertablerId;
 	}
@@ -77,6 +78,12 @@ public class Order {
 	}
 	public void setOrdersTime(String ordersTime) {
 		this.ordersTime = ordersTime;
+	}
+	public String getTableState() {
+		return tableState;
+	}
+	public void setTableState(String tableState) {
+		this.tableState = tableState;
 	}
 	
 	
